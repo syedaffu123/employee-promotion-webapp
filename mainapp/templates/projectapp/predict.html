@@ -1,0 +1,146 @@
+{% extends 'partials/base.html' %}
+{% block title %}Predict{% endblock %}
+
+{% block nav %}
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{% url 'home' %}"style="font-family: 'Brush Script MT', cursive;">Employee Promotion Prediction</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav ml-auto" style="font-size: large;">
+        <li class="nav-item">
+          <a class="nav-link {% block active %}active{% endblock %}" aria-current="page" href="{% url 'predict' %} ">Prediction</a>
+        </li>
+     
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'about' %} ">About</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+{% endblock %}
+
+
+{% block content  %}
+<br><br><br><br>
+<center class="animated bounce delay-0s" style="font-family: 'Times New Roman', Times, serif;font-size: 70px;">Employee Promotion Prediction</center>
+
+<br><br><br><br><center>
+<div class="container">
+<form action="{% url 'result' %}" >
+  {% csrf_token %}
+<h4>  <label for='empid' >Employee ID:</label>
+  <input type="number" name="empid" id="empid" placeholder="Your Employee ID" required></h4>
+  <br><br>
+  <h4> <label for='age' >Age:</label>
+    <input type="number" name="age" id='age' placeholder='Enter your Age' required></h4>
+    <br> <br>
+    <h4> <label for='gender' >Gender:</label>
+      <select name="gender" id="gender" >
+        <option value=0>Female&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
+        <option value=1>Male</option></h4></select>
+      <br><br>
+    <h4><label for='education' >Education:</label>
+      <select name="education" id="education" >
+        <option value=2>Masters & Above&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
+        <option value=0>Bachelor's</option>
+        <option value=1>Below Secondary</option>
+        
+      </select></h4>
+        <br> <br>
+    <h4><label for='Department'>Department:</label>
+      <select name="department" id="department" >
+        <option value=7>Sales & Department&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
+        <option value=4>Operations</option>
+        <option value=8>Technology</option>
+        <option value=0>Analytics</option>
+        <option value=6>R&D</option>
+        <option value=5>Procurement</option>
+        <option value=1>Finance</option>
+        <option value=2>HR</option>    
+        <option value=3>Legal</option>    
+      </select></h4>
+          <br><br>
+    <h4><label for='Region'>Region:</label>
+      <select name="region" id="'region" >
+      <option value=0>Region 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
+      <option value=11>Region 2</option>
+      <option value=22>Region 3</option>
+      <option value=28>Region 4</option>
+      <option value=29>Region 5</option>
+      <option value=30>Region 6</option>
+      <option value=31>Region 7</option>
+      <option value=32>Region 8</option>    
+      <option value=33>Region 9</option>
+      <option value=1>Region 10</option>
+      <option value=2>Region 11</option>
+      <option value=3>Region 12</option>
+      <option value=4>Region 13</option>
+      <option value=5>Region 14</option>
+      <option value=6>Region 15</option>
+      <option value=7>Region 16</option>
+      <option value=8>Region 17</option>
+      <option value=9>Region 18</option>
+      <option value=10>Region 19</option>
+      <option value=12>Region 20</option>
+      <option value=13>Region 21</option>
+      <option value=14>Region 22</option>
+      <option value=15>Region 23</option>
+      <option value=16>Region 24</option>
+      <option value=17>Region 25</option>
+      <option value=18>Region 26</option>
+      <option value=19>Region 27</option>
+      <option value=20>Region 28</option>
+      <option value=21>Region 29</option>
+      <option value=23>Region 30</option>
+      <option value=24>Region 31</option>
+      <option value=25>Region 32</option>
+      <option value=26>Region 33</option>
+      <option value=27>Region 34</option>
+
+    
+    </select></h4>
+            <br> <br>
+    <h4><label for='Recruitment Channel'>Recruitment Channel:</label>
+              <select name="recruitment" id="recruitment">
+                <option value=2>Sourcing&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
+                <option value=0>Other</option>
+                <option value=1>Referred</option>
+
+              </select></h4>
+              <br> <br>
+    <h4><label for='Previous year Rating'>Previous Year Rating:</label>
+                <input type="number"  name="rating" id="rating" required ></h4>
+                <br> <br>
+                <h4><label for='training'>No. of trainings:</label>
+                <input type="number"  name="training" id="training" required ></h4>
+                <br><br>
+                
+                <h4><label for='training score'>Training Score:</label>
+                <input type="number"  name="score" id="score" required></h4>
+                <br><br>
+                
+                <h4><label for='service'>Years of Service:</label>
+                <input type="number"  name="service" id="service" required></h4>
+                <br><br>
+                
+                <h4><label for='kpi'>KPI:</label>
+                <input type="number"  name="kpi" id="kpi" placeholder="Key performance Indicator" required></h4>
+                <br><br>
+                
+                <h4><label for='award'>AWARD:</label>
+                <input type="number"  name="award" id="award" placeholder="Award" required></h4>            
+
+    
+  <br><br><br>
+
+  <input type="submit" class="button button1" value="Get Predictions">
+<br><br><br>  
+
+</form></div></center>
+
+{% endblock %}

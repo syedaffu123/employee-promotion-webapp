@@ -1,0 +1,47 @@
+{% extends 'partials/base.html' %}
+{% block title %}About{% endblock %}
+{% block nav %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{% url 'home' %}"style="font-family: 'Brush Script MT', cursive;">Employee Promotion Prediction</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav ml-auto" style="font-size: large;">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="{% url 'predict' %} ">Prediction</a>
+          </li>
+        
+          <li class="nav-item">
+            <a class="nav-link {% block active %}active{% endblock %}" href="{% url 'about' %} ">About</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+{% endblock %}
+{% block content %}
+<br><br><br><br>
+<div class="container">
+<h1 class="animated bounce">Features that are being used to identify if an Employee will get an promotion or not.</h1><br>
+    <p>
+        <strong>employee_id :</strong> Unique ID for employee.<br><br>
+        <strong>department :</strong> Department of employee<br><br>
+        <strong>region :</strong> Region of employment<br><br>
+        <strong>education :</strong> Education Level.<br><br>
+        <strong>gender :</strong> Gender of Employee.<br><br>
+        <strong>recruitment_channel :</strong> Channel of recruitment for employees.<br><br>
+        <strong>no_of_trainings :</strong> no. of other training completed in previous year on soft skills, technical skills etc.<br><br>
+        <strong>age :</strong> Age of Employee.<br><br>
+        <strong>previous_year_rating :</strong> Employee Rating for the previous year.<br><br>
+        <strong>length_of_service :</strong> Length of service in years.<br><br>
+        <strong>KPIs_met >80% :</strong> If Percent of KPIs(Key performance Indicators) >80% then 1 else 0.<br><br>
+        <strong>awards_won? :</strong> If awards won during the previous year then 1 else 0.<br><br>
+        <strong>avg_training_score :</strong> Average score in current training evaluations.<br><br>
+        
+   
+    </p>
+    <h3>Target Variable:</h3><br> <strong>is_promoted : </strong>Recommended for promotion.<br><br>
+  </div>
+{% endblock %}

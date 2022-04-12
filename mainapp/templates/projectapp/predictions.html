@@ -1,0 +1,67 @@
+{% extends 'partials/base.html' %}
+{% block title %}Predictions{% endblock %}
+
+{% block nav %}
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{% url 'home' %}"style="font-family: 'Brush Script MT', cursive;">Employee Promotion Prediction</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav ml-auto" style="font-size: large;">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="{% url 'predict' %} ">Prediction</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {% block active %}active{% endblock %}" href="{% url 'predictions' %} ">All Predictions</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'about' %} ">About</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+{% endblock %}
+{% block content %}
+<br><br><br>
+<div class="container">
+    <div class="row mt-4">
+        <div class="col-md-8 offset-md-2">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">First</th>
+                    <th scope="col">Last</th>
+                    <th scope="col">Handle</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">2</th>
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                    <td>@fat</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">3</th>
+                    
+                    <td colspan="2">Larry the Bird</td>
+                    <td>@twitter</td>
+                  </tr>
+                </tbody>
+              </table>
+         
+        </div>
+    </div>
+</div>
+{% endblock %}

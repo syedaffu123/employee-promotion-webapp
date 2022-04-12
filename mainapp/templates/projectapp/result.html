@@ -1,0 +1,40 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+{% block title %}Result{% endblock %}
+{% block nav %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{% url 'home' %}"style="font-family: 'Brush Script MT', cursive;">Employee Promotion Prediction</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav ml-auto" style="font-size: large;">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="{% url 'predict' %} ">Prediction</a>
+          </li>
+        
+          <li class="nav-item">
+            <a class="nav-link {% block active %}active{% endblock %}" href="{% url 'about' %} ">About</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+{% endblock %}
+{% block content %}
+<br><br>
+<center><h1 style="font-family: 'Times New Roman', Times, serif;font-size: 90px; color: rgba(202, 97, 11, 0.884);">RESULT</h1>
+<br><br></center>
+    {% if result == 'Promotion'%}
+<center><img src="https://static.toiimg.com/photo/69326072.cms">
+  <div class="container animated heartBeat delay-1s" style="font-size: 40px; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;"> {{result}}</div>
+</center>
+    
+    {% else %}
+<center>    <img src="https://i.pinimg.com/originals/06/bf/91/06bf91d8be1cbcd9a16c5bec3371be77.jpg">
+     <br><br>
+     <div class="container animated heartBeat delay-1s" style="font-size: 40px; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;"> {{result}}</div>
+    {% endif %}
+    <br><br>
+{% endblock%}
